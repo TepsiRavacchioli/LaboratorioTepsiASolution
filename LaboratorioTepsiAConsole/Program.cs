@@ -6,9 +6,11 @@ namespace LaboratorioTepsiAConsole
     {
         static void Main(string[] args)
         {
-            int num = 8;
+            int num = 0;
             string res = "";
-              while (num > 0)
+            Console.WriteLine("ins num dec");
+            num = Convert.ToInt32(Console.ReadLine());
+            while (num > 0)
             {
                 int resto = num % 2;
                 res = resto + res;
