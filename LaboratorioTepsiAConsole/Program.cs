@@ -7,13 +7,29 @@ namespace LaboratorioTepsiAConsole
         static void Main(string[] args)
         {
             int num = 0;
-            string res = "";
-            Console.WriteLine("ins num dec");
-            num = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("quale base vuoi? implementate fino a 16 ");
-            int response = Convert.ToInt32(Console.ReadLine());
-            int baseConv = response;
-            Console.WriteLine("secondo account da stesso PC via ssh sono TEPSI!!! ");
+            string result = "";
+            string numIns, baseIns = "";
+            int baseConv = 0;
+            /*CONTROLLO NUMERO INTERO*/
+            do
+            {
+                Console.WriteLine("Inserisci un numero decimale da convertire INTERO");
+                numIns = Console.ReadLine();
+            } while (!Int32.TryParse(numIns, out num));
+
+
+            /*CONTROLLO BASE INSERITA*/
+
+            do
+            {
+                Console.WriteLine("In quale base vuoi convertire? ammessi interi da 2 fino a 16 ");
+                do
+                {
+                    Console.WriteLine("La base deve essere un intero ");
+                    baseIns = Console.ReadLine();
+                } while (!Int32.TryParse(baseIns, out baseConv));
+
+            } while (baseConv < 2 || baseConv > 16);
 
             while (num > 0)
             {
@@ -44,13 +60,14 @@ namespace LaboratorioTepsiAConsole
                         alfa = alfa + resto;
                         break;
                 }
-                res = alfa + res;
+                result = alfa + result;
                 num = num / baseConv;
             }
 
-            Console.WriteLine($" la base che ho scelto è {baseConv}");
-            Console.WriteLine($" risultato {res}");
-            Console.WriteLine($" num attuale {num}");
+            Console.WriteLine($"il risultato che ottengo dalla conversione di {numIns}");
+            Console.WriteLine($" in base {baseConv} è: {result}");
+            Console.ReadLine();
+
         }
     }
 }
